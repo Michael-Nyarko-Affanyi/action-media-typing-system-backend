@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import logger from './utils/logger.js'
 
 const result = dotenv.config()
 if (result.error) {
@@ -17,5 +18,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server listening on http://localhost:${process.env.PORT}`)
+    logger.info(`Server listening on http://localhost:${process.env.PORT}`)
 })
