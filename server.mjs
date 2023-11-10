@@ -4,6 +4,7 @@ import cors from 'cors'
 import logger from './utils/logger.js'
 import connectDB from "./utils/connectDB.js";
 import {authRouter} from "./routes/index.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 const result = dotenv.config()
 if (result.error) {
@@ -20,6 +21,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/auth', authRouter)
+app.use(errorHandler)
+app.use('*', (req, res) => {
+    res.status(404).json({error: "Not found"})
+})
+
 
 await connectDB()
 
