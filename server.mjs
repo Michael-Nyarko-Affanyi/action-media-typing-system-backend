@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import logger from './utils/logger.js'
 import connectDB from "./utils/connectDB.js";
+import {authRouter} from "./routes/index.js";
 
 const result = dotenv.config()
 if (result.error) {
@@ -17,6 +18,8 @@ app.use(express.json(), cors())
 app.get('/', (req, res) => {
     res.end(`<h1>Typing app endpoint</h1>`)
 })
+
+app.use('/api/v1/auth', authRouter)
 
 await connectDB()
 
