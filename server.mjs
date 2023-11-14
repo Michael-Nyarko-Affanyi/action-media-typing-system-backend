@@ -15,7 +15,8 @@ if (result.error) {
 
 const app = express()
 
-app.use(express.json(), cors(), cookieParser(process.env.COOKIE_SECRET))
+app.use(express.json(), cookieParser(process.env.COOKIE_SECRET))
+app.use(cors({origin: process.env.CLIENT_URL, credentials: true}))
 
 app.get('/', (req, res) => {
     res.end(`<h1>Typing app endpoint</h1>`)
