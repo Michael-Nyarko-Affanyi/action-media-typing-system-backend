@@ -1,10 +1,9 @@
+const BadRequestError = require('./BadRequestError');
+const NotFoundError = require('./NotFoundError');
+const UnauthorizedError = require('./UnauthorizedError');
 
-
-class Error {
-    constructor(message) {
-        this.message = message;
-        this.status = 500;
-    }
+module.exports = {
+    BadRequestError,
+    NotFoundError,
+    UnauthorizedError
 }
-
-module.exports = Error;

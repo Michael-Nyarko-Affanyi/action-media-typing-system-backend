@@ -1,3 +1,4 @@
+const Error = require('./Error.js');
 
 class NotFoundError extends Error {
   constructor(message) {

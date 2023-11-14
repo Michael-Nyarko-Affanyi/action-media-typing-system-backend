@@ -1,3 +1,4 @@
+const Error = require('./Error.js');
 
 class BadRequestError extends Error {
   constructor(message) {
