@@ -5,6 +5,7 @@ import logger from './utils/logger.js'
 import connectDB from "./utils/connectDB.js";
 import {authRouter} from "./routes/index.js";
 import errorHandler from "./middleware/errorHandler.js";
+import cookieParser from "cookie-parser";
 
 const result = dotenv.config()
 if (result.error) {
@@ -14,7 +15,7 @@ if (result.error) {
 
 const app = express()
 
-app.use(express.json(), cors())
+app.use(express.json(), cors(), cookieParser(process.env.COOKIE_SECRET))
 
 app.get('/', (req, res) => {
     res.end(`<h1>Typing app endpoint</h1>`)
