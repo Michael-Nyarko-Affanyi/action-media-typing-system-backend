@@ -61,3 +61,13 @@ exports.login = asyncWrapper(async (req, res) => {
 
     res.status(200).json({msg: "Login successful"});
 });
+
+exports.logout = asyncWrapper(async (req, res) => {
+    res.clearCookie('accessToken');
+    res.status(200).json({msg: "Logout successful"});
+});
+
+exports.showSchool = asyncWrapper(async (req, res) => {
+    const schoolDoc = await School.findById(req.user.id).populate('students').select('-password');
+    res.status(200).json({school: schoolDoc});
+});
